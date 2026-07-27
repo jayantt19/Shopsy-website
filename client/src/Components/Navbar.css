@@ -1,0 +1,161 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background-color: #F1F3f6;
+}
+
+.navbar{
+    height: 75px;
+    background-color: rgb(19, 66, 184);
+    /* width: 100vw; */
+    color: white;
+    display: flex;
+    align-items: center;
+     justify-content: space-between;
+     padding: 0 24px;
+     gap: 20px;
+    box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+
+.navbar-logo{
+    display:flex;
+    flex-direction:column;
+     padding: 1px 8px 0px 6px;
+     margin-left:11px;
+}
+.smile{
+    width: 90px;
+}
+
+.location{
+    margin: 15px;
+}
+
+.deliever{
+    margin-left: 27px;
+    font-size: 0.85rem;
+}
+.location-icon{
+    display: flex;
+    align-items: center;
+}
+.locate{
+    width: 25px;
+    margin-top: 2px;
+}
+.update{
+    font-size:1rem;
+     margin-left: 3px;
+     font-weight: 600;
+}
+
+.search-bar{
+    display: flex;
+}
+
+.search{
+    width: 500px;
+    height: 36px;
+    padding: 0px 16px 0px 16px;
+    border:none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.search:focus{
+    border: none;
+    outline: none;
+}
+
+
+.search-icon{
+    width: 20px;
+    height: 20px;
+    color: rgb(19, 66, 184);
+}
+
+.submit{
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: none;
+    padding: 0 12px;
+    cursor: pointer;
+    width: 40px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.cart{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.cart-icon{
+    width: 30px;
+}
+
+.login{
+    background-color: white;
+    width: 90px;
+    color: rgb(19, 66, 184);
+    padding: 8px;
+    text-align: center;
+    border-radius: 20px;
+    font-size: 1rem;
+    border: none;
+}
+
+.login:hover{
+     background:#f3f3f3;
+    transform: scale(105%);
+}
+
+.cart,
+.return,
+.location{
+    cursor:pointer;
+    transition:.25s;
+}
+
+.cart:hover,
+.return:hover{
+     transform: scale(105%);
+}
+
+.panel{
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    font-size: 16px; 
+
+    /* padding: 40px; */
+}
+
+.panel-item{
+    position:relative;
+    color:#094aac;
+    font-weight:500;
+     padding:15px 18px;
+     text-decoration: none;
+    
+}
+
+.panel-item:hover {
+   
+    color: #1c72fc;
+
+}
+
+.panel-item:hover::after {
+    transform: scaleX(1);
+}
