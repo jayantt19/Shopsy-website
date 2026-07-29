@@ -7,9 +7,10 @@ const ProductSection = () => {
   useEffect(() => {
     const fetchProducts=async()=>{
     try{
-         const response=await fetch("https://api.escuelajs.co/api/v1/products?offset=0&limit=24")
+         const response=await fetch("https://fakestoreapi.com/products")
          const data=await response.json();
          setproducts(data);
+          console.log(data);
     }
     catch(err){
         console.log(err);
@@ -17,7 +18,6 @@ const ProductSection = () => {
     };
     fetchProducts();
   }, []);
-
   return (
     <div className="product-section">
         <h1>Featured Products</h1>
