@@ -4,8 +4,20 @@ import { FaStar,FaRegStar } from "react-icons/fa";
 import './ProductDetails.css'
 const ProductDetails = () => {
   const [product, setproduct] = useState(null);
+  const [products, setproducts] = useState([]);
   const [quantity, setquantity] = useState(1);
-   const {id}=useParams()
+   const {id}=useParams();
+
+   useEffect(() => {
+     const fetchProducts=async()=>{
+      const res=await fetch(`https://fakestoreapi.com/products`)
+      const data=await res.json();
+      setproducts(data);
+     }
+     fetchProducts();
+   }, [])
+
+
 
    useEffect(() => {
     const fetchProduct=async()=>{
@@ -23,6 +35,12 @@ try{
    
    if (!product) {
   return <h2>Loading...</h2>;
+
+  const relatedProducts=products.filter((item)=>{
+      return(
+        item.category===product.category && item.id!==product.id
+      );
+    })
 }
   const filledstars= Math.abs(product.rating.rate);
   return (
