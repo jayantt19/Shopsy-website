@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
 import { FaStar,FaRegStar } from "react-icons/fa";
 import './ProductDetails.css'
+import ProductCard from '../Components/ProductCard';
 const ProductDetails = () => {
   const [product, setproduct] = useState(null);
   const [products, setproducts] = useState([]);
@@ -10,7 +11,7 @@ const ProductDetails = () => {
 
    useEffect(() => {
      const fetchProducts=async()=>{
-      const res=await fetch(`https://fakestoreapi.com/products`)
+      const res=await fetch("https://fakestoreapi.com/products")
       const data=await res.json();
       setproducts(data);
      }
@@ -35,16 +36,17 @@ try{
    
    if (!product) {
   return <h2>Loading...</h2>;
+}
 
-  const relatedProducts=products.filter((item)=>{
+const relatedProducts=products.filter((item)=>{
       return(
         item.category===product.category && item.id!==product.id
       );
     })
-}
-  const filledstars= Math.abs(product.rating.rate);
+  const filledstars= Math.round(product.rating.rate);
   return (
-    <div className='product-details'>
+    <>
+        <div className='product-details'>
       <div className="product-image">
         <img src={product.image} alt={product.title} />
       </div>
@@ -55,8 +57,7 @@ try{
            <span className='rate'>{product.rating?.rate}</span>
           {[...Array(5)].map((_,index)=>index<filledstars?(<FaStar className='star' key={index}/>):(
       <FaRegStar className='empstar' key={index} />
-    ))}
-
+       ))}
           <span className='count'>({product.rating?.count} reviews)</span>
         </div>
 
@@ -78,7 +79,18 @@ try{
         </button>
         <button className='buy-btn'>Buy now</button>
       </div>
-    </div>
+      </div>
+
+      {/* Related Products */}
+      <div className="related-products">
+        <h2>Related Products</h2>
+        <div className="related-products-grid">
+          {relatedProducts.slice(0,4).map((item)=>(
+            <ProductCard key={item.id} product={item}/>
+          ))}
+        </div>
+      </div>
+    </>
   );
 }
 

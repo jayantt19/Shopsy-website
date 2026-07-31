@@ -10,7 +10,6 @@ const ProductSection = () => {
          const response=await fetch("https://fakestoreapi.com/products")
          const data=await response.json();
          setproducts(data);
-          console.log(data);
     }
     catch(err){
         console.log(err);
