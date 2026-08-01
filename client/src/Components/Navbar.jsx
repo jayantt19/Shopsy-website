@@ -1,17 +1,24 @@
 import React from 'react';
 import { FaSearch } from "react-icons/fa";
 import './Navbar.css';
+import { useContext } from "react";
+import { CartContext } from "../context/CartContext";
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa"; 
-const Navbar = () => {
+const Navbar = ({ searchTerm, setSearchTerm }) => {
+ const { cart } = useContext(CartContext);
+  const cartCount = cart.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
   return (
     <>
     <header>
       <div className='navbar'>
-        <div className='navbar-logo'>
+        <Link to='/' className='navbar-logo'>
             <h1>Shopsy</h1>
              <svg className="smile" viewBox="0 0 220 50">
         <path
@@ -30,7 +37,7 @@ const Navbar = () => {
             strokeLinejoin="round"
         />
     </svg>
-        </div>
+        </Link>
         <div className='location'>
           <span className='deliever'>Deliver to</span>
             <div className='location-icon'>
@@ -39,18 +46,28 @@ const Navbar = () => {
             </div>
         </div>
         <div className='search-bar'>
-          <input type="text" className='search' placeholder='search for a product,category or brand'/>
+         <input
+  type="text"
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  placeholder="Search for a product..."
+  className='search'
+/>
           <button className='submit'><FaSearch className='search-icon' /></button> 
         </div>
         <div className='account'>
            <button className='login'>Login</button>
         </div>
         <div className='return'>My Orders</div>
-        <div className='cart'>
-          <div className='cart-icon'>
-             <FaShoppingCart />
-          </div>Cart
-        </div>
+        <Link  to="/cart" className='cart'>
+          <div className="cart-icon">
+  <FaShoppingCart />
+
+  {cartCount > 0 && (
+  <span className="cart-count">{cartCount}</span>
+)}
+</div>Cart
+        </Link>
       </div>
 
 

@@ -27,6 +27,8 @@ body{
     flex-direction:column;
      padding: 1px 8px 0px 6px;
      margin-left:11px;
+     text-decoration: none;
+     color: white;
 }
 .smile{
     width: 90px;
@@ -96,6 +98,29 @@ body{
     display: flex;
     align-items: center;
     font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+.cart-icon {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.cart-count {
+  position: absolute;
+  top: -7px;
+  right: -4px;
+  background: red;
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
 
 .cart-icon{

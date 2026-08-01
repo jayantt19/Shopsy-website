@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {useParams} from 'react-router-dom';
 import { FaStar,FaRegStar } from "react-icons/fa";
 import './ProductDetails.css'
+import { CartContext } from '../context/CartContext';
 import ProductCard from '../Components/ProductCard';
 const ProductDetails = () => {
   const [product, setproduct] = useState(null);
   const [products, setproducts] = useState([]);
   const [quantity, setquantity] = useState(1);
    const {id}=useParams();
-
+const { addToCart } = useContext(CartContext);
    useEffect(() => {
      const fetchProducts=async()=>{
       const res=await fetch("https://fakestoreapi.com/products")
@@ -75,8 +76,17 @@ const relatedProducts=products.filter((item)=>{
             setquantity(quantity+1);
           }}>+</button>
         </div>
-        <button className='cartbtn'>Add to Cart
-        </button>
+       <button
+  className="cartbtn"
+  onClick={() =>
+    addToCart({
+      ...product,
+      quantity,
+    })
+  }
+>
+  Add to Cart
+</button>
         <button className='buy-btn'>Buy now</button>
       </div>
       </div>

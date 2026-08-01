@@ -7,3 +7,9 @@
     grid-template-columns: repeat(4,1fr);
     gap: 20px;
 }
+.no-product {
+  text-align: center;
+  width: 100%;
+  margin: 50px 0;
+  color: #666;
+}

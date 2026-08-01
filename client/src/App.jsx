@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './Components/Navbar';
 import Home from './Pages/Home';
-import Cart from './Pages/Cart';
+import Cart from "./Pages/Cart";
 import Login from './Pages/Login';
 import Notfound from './Pages/Notfound';
 import ProductDetails from './Pages/ProductDetails';
@@ -12,12 +12,19 @@ import ScrollToTop from "./Components/ScrollToTop";
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 const App = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <>
-      <Navbar />
        <ScrollToTop />
+       <Navbar
+    searchTerm={searchTerm}
+    setSearchTerm={setSearchTerm}
+  />
         <Routes>
-          <Route path='/' element={<Home />} />
+            <Route
+      path="/"
+      element={<Home searchTerm={searchTerm} />}
+    />
           <Route path='/cart' element={<Cart />} />
           <Route path='/product' element={<Products />} />
           <Route path='/register' element={<Register />} />
