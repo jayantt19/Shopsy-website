@@ -69,17 +69,6 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
 </div>Cart
         </Link>
       </div>
-
-
-      <div className="panel">
-        <Link to='/grocery' className="panel-item">Grocery</Link>
-        <Link to='/mobile' className="panel-item">Mobile</Link>
-       <Link to='/fashion' className="panel-item">Fashion </Link>
-       <Link to='/electronics' className="panel-item">Electronics</Link>
-       <Link to='/travel' className="panel-item">Travels</Link>
-       <Link to='/toys' className="panel-item">Toys</Link>
-       <Link to='/sneaker' className="panel-item">Footwear</Link>
-      </div>
       </header>
     </>
   );
