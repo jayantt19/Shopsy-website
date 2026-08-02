@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import "./ProductSection.css";
-
+import LoadingSkeleton from "./LoadingSkeleton";
 const ProductSection = ({ searchTerm }) => {
 
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 const [sortOption, setSortOption] = useState("default");
   useEffect(() => {
     const fetchProducts = async () => {
-      try {
-        const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
-        setProducts(data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
+  try {
+    setLoading(true);
+
+    const response = await fetch("https://fakestoreapi.com/products");
+    const data = await response.json();
+
+    setProducts(data);
+  } catch (err) {
+    console.log(err);
+  } finally {
+    setLoading(false);
+  }
+};
 
     fetchProducts();
   }, []);
@@ -64,14 +70,18 @@ switch (sortOption) {
 </div>
 
       <div className="product-grid">
-        {filteredProducts.length > 0 ? (
-          sortedProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))
-        ) : (
-          <h2 className="no-product">No products found</h2>
-        )}
-      </div>
+  {loading ? (
+    Array.from({ length: 8 }).map((_, index) => (
+      <LoadingSkeleton key={index} />
+    ))
+  ) : filteredProducts.length > 0 ? (
+    sortedProducts.map((product) => (
+      <ProductCard key={product.id} product={product} />
+    ))
+  ) : (
+    <h2 className="no-product">No products found</h2>
+  )}
+</div>
     </div>
   );
 };
