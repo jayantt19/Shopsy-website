@@ -6,10 +6,15 @@ import { CartContext } from "../context/CartContext";
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
+import { FaHeart } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa"; 
+import { WishlistContext } from "../Context/WishlistContext";
 const Navbar = ({ searchTerm, setSearchTerm }) => {
  const { cart } = useContext(CartContext);
+ const { wishlist } = useContext(WishlistContext);
+
+const wishlistCount = wishlist.length;
   const cartCount = cart.reduce(
     (total, item) => total + item.quantity,
     0
@@ -58,7 +63,14 @@ const Navbar = ({ searchTerm, setSearchTerm }) => {
         <div className='account'>
            <button className='login'>Login</button>
         </div>
-        <div className='return'>My Orders</div>
+      <Link to="/wishlist" className="wishlist">
+      Wishlist
+    {wishlistCount > 0 && (
+      <span className="wishlist-count">
+        {wishlistCount}
+      </span>
+    )}
+</Link>
         <Link  to="/cart" className='cart'>
           <div className="cart-icon">
   <FaShoppingCart />
