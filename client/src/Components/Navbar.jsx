@@ -60,9 +60,9 @@ const wishlistCount = wishlist.length;
 />
           <button className='submit'><FaSearch className='search-icon' /></button> 
         </div>
-        <div className='account'>
+        <Link to='/login' className='account'>
            <button className='login'>Login</button>
-        </div>
+        </Link>
       <Link to="/wishlist" className="wishlist">
       Wishlist
     {wishlistCount > 0 && (

@@ -5,7 +5,6 @@ import Cart from "./Pages/Cart";
 import Login from './Pages/Login';
 import Notfound from './Pages/Notfound';
 import ProductDetails from './Pages/ProductDetails';
-import Products from './Pages/Products';
 import Register from './Pages/Register';
 import Wishlist from './Pages/Wishlist';
 import ScrollToTop from "./Components/ScrollToTop";
@@ -26,7 +25,7 @@ const App = () => {
       element={<Home searchTerm={searchTerm} />}
     />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/product' element={<Products />} />
+          {/* <Route path='/product' element={<Products />} /> */}
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />
           <Route path='/product/:id' element={<ProductDetails />} />
