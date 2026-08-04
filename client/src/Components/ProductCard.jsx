@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import "./ProductCard.css";
 import {Link} from 'react-router-dom';
-import { WishlistContext } from "../Context/WishlistContext";
+import { WishlistContext } from "../context/WishlistContext";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 const ProductCard = ({ product }) => {
   const { toggleWishlist, isInWishlist } = useContext(WishlistContext);
