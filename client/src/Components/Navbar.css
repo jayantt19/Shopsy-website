@@ -115,7 +115,7 @@ body{
     display: flex;
     align-items: center;
     gap: 8px;
-    color: white;
+    color: rgb(220, 217, 217);
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
@@ -123,11 +123,11 @@ body{
 }
 
 .cart:hover{
-    color: #ffd54f;
+    color: white;
 }
 
 .wishlist:hover{
-    color: #ff5a5f;
+    color: white;
 }
 
 .wishlist-icon {

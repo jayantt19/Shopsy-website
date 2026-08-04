@@ -9,7 +9,7 @@ import { FaUser } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { FaChevronDown } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa"; 
-import { WishlistContext } from "../Context/WishlistContext";
+import { WishlistContext } from "../context/WishlistContext"
 const Navbar = ({ searchTerm, setSearchTerm }) => {
  const { cart } = useContext(CartContext);
  const { wishlist } = useContext(WishlistContext);

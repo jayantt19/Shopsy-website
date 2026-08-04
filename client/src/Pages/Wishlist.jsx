@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { WishlistContext } from "../Context/WishlistContext";
+import { WishlistContext } from "../context/WishlistContext";
 import ProductCard from "../Components/ProductCard";
 import "./Wishlist.css";
 
