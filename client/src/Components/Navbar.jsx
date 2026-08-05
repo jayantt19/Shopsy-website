@@ -7,13 +7,15 @@ import { Link } from 'react-router-dom';
 import { FaShoppingCart } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { FaBars } from "react-icons/fa";
+import { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import { FaMapMarkerAlt } from "react-icons/fa"; 
 import { WishlistContext } from "../context/WishlistContext"
 const Navbar = ({ searchTerm, setSearchTerm }) => {
  const { cart } = useContext(CartContext);
  const { wishlist } = useContext(WishlistContext);
-
+const [menuOpen, setMenuOpen] = useState(false);
 const wishlistCount = wishlist.length;
   const cartCount = cart.reduce(
     (total, item) => total + item.quantity,
@@ -64,23 +66,52 @@ const wishlistCount = wishlist.length;
            <button className='login'>Login</button>
         </Link>
       <Link to="/wishlist" className="wishlist">
-      Wishlist
+    <FaHeart />
+    <span className="wishlist-text">Wishlist</span>
+
     {wishlistCount > 0 && (
-      <span className="wishlist-count">
-        {wishlistCount}
-      </span>
+        <span className="wishlist-count">{wishlistCount}</span>
     )}
 </Link>
-        <Link  to="/cart" className='cart'>
-          <div className="cart-icon">
-  <FaShoppingCart />
 
-  {cartCount > 0 && (
-  <span className="cart-count">{cartCount}</span>
-)}
-</div>Cart
-        </Link>
+<Link to="/cart" className="cart">
+    <div className="cart-icon">
+        <FaShoppingCart />
+        {cartCount > 0 && (
+            <span className="cart-count">{cartCount}</span>
+        )}
+    </div>
+
+    <span className="cart-text">Cart</span>
+</Link>
+        <button
+  className="menu-btn"
+  onClick={() => setMenuOpen(!menuOpen)}
+>
+  <FaBars />
+</button>
       </div>
+      {menuOpen && (
+  <div className="mobile-menu">
+
+    <Link to="/login" className="mobile-link">
+      Login
+    </Link>
+
+    <Link to="/wishlist" className="mobile-link">
+      Wishlist
+    </Link>
+
+    <Link to="/cart" className="mobile-link">
+      Cart
+    </Link>
+
+    <div className="mobile-location">
+      📍 Mathura 281006
+    </div>
+
+  </div>
+)}
       </header>
     </>
   );
